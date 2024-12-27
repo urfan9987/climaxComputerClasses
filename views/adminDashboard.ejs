@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    /* Custom styles for the dashboard */
+    body {
+      padding-top: 50px;
+    }
+    .dashboard-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .dashboard-card {
+      width: 30%;
+      margin-bottom: 20px;
+    }
+    .logout-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: red;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1 class="text-center">Admin Dashboard</h1>
+
+    <div class="dashboard-container">
+      <!-- Register New Student Button -->
+      <div class="card dashboard-card">
+        <div class="card-body text-center">
+          <h5 class="card-title">Register New Student</h5>
+          <button class="btn btn-primary" onclick="window.location.href='/stuRegister'">Register</button>
+        </div>
+      </div>
+
+      <!-- Add New Course Button -->
+      <div class="card dashboard-card">
+        <div class="card-body text-center">
+          <h5 class="card-title">Add New Course</h5>
+          <button class="btn btn-primary" onclick="window.location.href='/courseUplaod'">Add Course</button>
+        </div>
+      </div>
+
+      <!-- Add Images to Gallery Button -->
+      <div class="card dashboard-card">
+        <div class="card-body text-center">
+          <h5 class="card-title">Add Images to Gallery</h5>
+          <button class="btn btn-primary" onclick="window.location.href='/galleryUpload'">Add Images</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Logout Button -->
+    <button class="btn logout-btn" onclick="window.location.href='/logout'">Logout</button>
+
+  </div>
+
+  <!-- Bootstrap JS and Popper.js -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

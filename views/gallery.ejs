@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+<!-- Meta Tags -->
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+<meta name="author" content="WRIGLECS" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+<meta name="description" content="Computer Institute - Climax Computer Institutes is the best Computer institute in . We are offering DCA, ADCA, CCC & O level & Tally Courses. We are also offering Programing Courses C Language, C++, Java etc." />
+<meta name="keywords" content="Best computer institute in , computer institute, pmkvy, pradhan mantri kaushal vikas yojana, pmkvy, Climax Computer Institutes  in , DCA, ADCA, ccc, o level, java, c, c++ courses " />
+<title>Climax Computer Institutes</title>
+<!-- FAVICON FILES and Touch Icons -->
+	<link href="images/fav.png" rel="apple-touch-icon" sizes="144x144">
+	<link href="images/fav.png" rel="apple-touch-icon" sizes="114x114">
+	<link href="images/fav.png" rel="apple-touch-icon" sizes="72x72">
+	<link href="images/fav.png" rel="apple-touch-icon">
+	<link href="images/fav.png" rel="shortcut icon">
+<!-- Stylesheet -->
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="css/jquery-ui.min.css" rel="stylesheet" type="text/css">
+<link href="css/animate.css" rel="stylesheet" type="text/css">
+<link href="css/css-plugin-collections.css" rel="stylesheet"/>
+<!-- CSS | menuzord megamenu skins -->
+<link href="css/menuzord-megamenu.css" rel="stylesheet"/>
+<link id="menuzord-menu-skins" href="css/menuzord-boxed.css" rel="stylesheet"/>
+<!-- CSS | Main style file -->
+<link href="css/style-main.css" rel="stylesheet" type="text/css">
+<!-- CSS | Preloader Styles -->
+<link href="css/preloader.css" rel="stylesheet" type="text/css">
+<!-- CSS | Custom Margin Padding Collection -->
+<link href="css/custom-bootstrap-margin-padding.css" rel="stylesheet" type="text/css">
+<!-- CSS | Responsive media queries -->
+<link href="css/responsive.css" rel="stylesheet" type="text/css">
+<link href="css/theme-skin-color-set4.css" rel="stylesheet" type="text/css">
+<!-- external javascripts -->
+
+
+</head>
+<body class="">
+<div id="wrapper" class="clearfix">
+    
+  <!--<script type="text/javascript">
+function find_branch($mysqli,val)
+{
+	location.href='branches.php?branchid='+val;
+	return false;
+}
+</script>-->
+ <!-- Header -->
+ <%- include('partials/Header') %>
+               <style>
+			.closebtn {
+			margin-left: 15px;
+			color: white;
+			font-weight: bold;
+			float: right;
+			font-size: 22px;
+			line-height: 20px;
+			cursor: pointer;
+			transition: 0.3s;
+			}
+			</style>  <!-- Start main-content -->
+  <div class="main-content">
+    <!-- Section: home -->
+    <style>
+      .gallery-item img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+      }
+      .gallery-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+          gap: 16px;
+      }
+      .gallery-item {
+          position: relative;
+          width: 100%;
+          height: 200px;
+          border: 1px solid #ddd;
+          padding: 5px;
+          box-sizing: border-box;
+      }
+  </style>
+</head>
+<body>
+  <div class="container mt-5">
+      <h2 class="text-center mb-4">Photo Gallery</h2>
+      <div class="gallery-grid">
+          <% data.forEach(function(item) { %>
+              <div class="gallery-item">
+                  <!-- Assuming 'imageData' contains base64 data for each image -->
+                  <img src="data:image/jpeg;base64,<%= item.images %>" alt="Gallery Image">
+              </div>
+          <% }); %>
+      </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <section class="position-inherit">
+      <div class="container">
+        <div class="row">
+          
+          <div class="col-md-12">
+            
+           <style>
+body {font-family: "Lato", sans-serif;}
+/* Style the tab */
+div.tab {
+    overflow: hidden;
+    background: url('images/00.html');
+	color:#023126;
+	border-radius:5px;
+	
+	height:auto;
+	width:100%
+	
+}
+span.tab{
+	overflow: hidden;
+	padding: 0px 20px;
+    transition: 0.3s;
+    font-size: 17px;
+	 outline: none;
+    cursor: pointer;
+}
+/* Style the buttons inside the tab */
+div.tab button {
+    background-color: #ce0810;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+	text-transform:uppercase;
+	padding:8px;
+    transition: 0.3s;
+    font-size: 13px;
+	font-family: 'Lato', sans-serif;
+    height:auto;
+	color:#fff;
+	border-left: solid 1px #fff;
+	margin-top:5px;
+	}
+
+/* Change background color of buttons on hover */
+div.tab button:hover {
+	background:#1e124d;
+    color:#fff;
+	}
+/* Create an active/current tablink class */
+div.tab button.active {
+	background:#1e124d;
+    color:#fff;
+}
+div.tab button.active:hover {
+    color:#fff;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 3px 0px;
+    
+    
+	border-radius:5px;
+	
+}
+
+/* Style the close button */
+.topright {
+    float: right;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.topright:hover {color: red;
+
+}
+.heading1{
+	font-family: Oswald !important;
+	font-size:50px;
+	color:#023126;
+	font-weight: 500;
+	text-align:center;
+}
+</style>
+<link rel="stylesheet" href="../maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+
+<div id="tour1" class="tabcontent">
+ 
+<div class="col-lg-3" style="margin-top:2%;">
+
+
+  <img src="data:image/png;base64,<%= data.images %>" alt="<%= data.title %>" class="profile-img mb-3">
+</div>
+
+
+ 
+
+</div>
+<div id="tour23" class="tabcontent">
+ 
+  <div class="gallery-grid">
+    <% data.forEach(function(item) { %>
+        <div class="gallery-item">
+            <!-- Check if the image is a base64 string, otherwise fallback -->
+            <img src="data:image/jpeg;base64,<%= item.images %>" alt="Gallery Image">
+        </div>
+    <% }); %>
+</div>
+	   
+</div>
+<div id="tour22" class="tabcontent">
+	   
+</div>
+</div>
+</div>
+  
+								
+										
+									</div>
+									
+								</div>
+					  
+			
+          </div>
+          
+        </div>
+      </div>
+    </section>
+<!-- end main-content -->
+</div>
+<!-- Footer -->
+<%- include('partials/Footer') %>
+<a class="scrollToTop" href="#"><i class="fa fa-angle-up"></i></a>
+</div>
+
+
+
+<!--Start of Tawk.to Script-->
+
+<!--End of Tawk.to Script-->
+<!-- end wrapper -->
+<script src="js/jquery-2.2.4.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<!-- JS | jquery plugin collection -->
+<script src="js/jquery-plugin-collection.js"></script>
+<!-- Footer Scripts -->
+<script src="js/custom.js"></script>
+
+
+</html>
