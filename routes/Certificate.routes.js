@@ -29,7 +29,7 @@ router.post("/DistCertificate/:id", async (req, res) => {
 router.post('/api/:studentId', async (req, res) => {
     const studentId = req.params.studentId;
     const student = await UserModels.findById({_id: studentId});
-    const  {name} = student;
+    const  {name, fathersname, grade, course} = student;
   
     if (!student || student.certificate !== 'Issued') {
       return res.status(404).send('Student not found or course not completed');
@@ -43,13 +43,27 @@ router.post('/api/:studentId', async (req, res) => {
     ctx.font = '105px Arial';
     ctx.fillStyle = 'black';
     ctx.fillText(name, 650, 750);
-    // ctx.fillText(student.name, 300, 300);
-    // ctx.fillText(student.course, 300, 350);
+    ctx.font = '35px Arial bold';
+    ctx.fillText(fathersname, 680, 848);
+    ctx.font = '35px Arial';
+    ctx.fillText(grade, 1050, 900);
+    ctx.font = '35px Arial';
+    ctx.fillText(course, 450, 900);
     // ctx.fillText(`Completed on: ${student.completionDate.toDateString()}`, 300, 400);
   
     res.set('Content-Type', 'image/jpeg');
     res.send(canvas.toBuffer('image/jpeg'));
   });
+
+ router.post('/api/grades/:studentId', async (req, res) => {
+    const studentId = req.params.studentId;
+    console.log(req.body.grade);
+    const {grades} = await UserModels.findByIdAndUpdate(studentId, { grade: req.body.grade });
+    // console.log(updateGrades);
+      res.status(200).json({ message: 'Grades updated successfully', grades });
+  
+
+ })
 
 module.exports = router;
 

@@ -1,37 +1,49 @@
-const AdminModel = require("../../models/admin.model.js");
-const comparePassword = require("../../utils/Password.Compare.js")
-const generateToken = require("../../utils/Token.generation.js");
-const AdminsetCookie = require("../../utils/adminCookie.setter.js");
-const setCookie = require("../../utils/cookie.token.setter.js")
+const Admin = require("../../models/admin.model");
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
+const AdminsetCookie = require("../../utils/adminCookie.setter");
 
-const LoginUser = async (req, res) => {
-  const { name, email, password } = req.body;
-  if (!name || !password) {
-    return res.status(400).json({ msg: "Please enter username and password" });
-  } else {
-    // Check if user exists in the database
-    const user = await AdminModel.findOne({ $or: [{ name }, { email }] });
+const loginAdmin = async (req, res) => {
+    try {
+        const { username, password } = req.body;
 
-    if (!user) {
-      return res.status(400).json({ msg: "User not found" });
-    } else {
-      // Check if password matches
-      
-      if (password == user.password) {
-          // If password matches, generate JWT token
-          const token =  generateToken(user._id);
-          AdminsetCookie(res,token)
-          console.log("cookie is in controoler file ")
-          // res.status(200).json({ token });
-         return res.redirect('/admin-dashboard')
-          // res.status(200).json("User Logged-In Succefully")
-       
-      }
-      else{
-        res.status(400).json("USer is not found and user has false passwords");
-      }
+        // Validate input
+        if (!username || !password) {
+            return res.status(400).json({ msg: "Please enter all fields" });
+        }
+
+        // Check if admin exists
+        const admin = await Admin.findOne({ username });
+        console.log(admin)
+        if (!admin) {
+            return res.status(404).json({ msg: "Admin not found" });
+        }
+
+        // Verify password
+        const isMatch = await bcrypt.compare(password, admin.password);
+        if (!isMatch) {
+            return res.status(400).json({ msg: "Invalid credentials" });
+        }
+
+        // Generate JWT
+        const token = jwt.sign({ id: admin._id }, process.env.JWT_SECRET, { expiresIn: "1d" });
+        AdminsetCookie(res, token);
+
+        // res.status(200).json({
+        //     msg: "Login successful",
+        //     token,
+        //     admin: {
+        //         id: admin._id,
+        //         username: admin.username,
+        //         email: admin.email,
+        //     },
+        // });
+        
+        res.redirect("/admin-dashboard");
+    } catch (err) {
+        console.error("Error logging in admin:", err);
+        res.status(500).json({ msg: "Internal server error" });
     }
-  }
 };
 
-module.exports = LoginUser;
+module.exports =  loginAdmin ;

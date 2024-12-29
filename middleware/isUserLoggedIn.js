@@ -11,6 +11,7 @@ const isUserLoggedIn = async (req, res, next) => {
     try {
         const decoded = jwt.verify(token, process.env.jWT_SECRET);
         const user = await UserModel.findById(decoded._id);
+        
 
         if (!user) {
             return res.status(401).json({ msg: "Not an student" });

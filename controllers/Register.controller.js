@@ -5,11 +5,11 @@ const axios = require("axios")
 
 const RegisterUser = async (req,res)=>{
     console.log(req.body)
-   const {name,username, email, password, course}= req.body;
+   const {name,username, email, password, fathersname ,course}= req.body;
 //    const dp = res.file.buffer.toString("base64");
 const dp = req.file ? req.file.buffer.toString("base64") : null;
 
-   console.log(name,username, password, email, course)
+   console.log(name, fathersname ,username, password, email, course)
 
    const user = await UserModel.findOne({email});
    
@@ -30,6 +30,7 @@ const dp = req.file ? req.file.buffer.toString("base64") : null;
         username,
         email,
         course,
+        fathersname,
         password: hashedPassword,
         dp,
     })

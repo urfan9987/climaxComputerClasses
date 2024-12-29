@@ -10,6 +10,14 @@ const UserSchema = new mongoose.Schema({
     type:String,
     required: [true, "Name is required"],
   },
+  fathersname:{
+    type:String,
+    required: [true, "Father's Name is required"],
+  },
+  grade:{
+    type: String,
+    default: "Not assigned yet ",
+  },
   certificate:{
     type: String,
     default: "Not issued yet ",

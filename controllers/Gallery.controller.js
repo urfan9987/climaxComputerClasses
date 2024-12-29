@@ -3,8 +3,8 @@ const Gallery = require("../models/gallery.model.js");
 const galleryUpload = async (req, res) => {
     try {
         const { title} = req.body;
-        const images = req.file ? req.file.buffer.toString("base64") : null;
-        console.log(title, images);
+        const images = req.file ? req.file.buffer.toString("base64") : null
+        // console.log(title, images);
         if (!title || !images) {
             return res.status(400).json({ msg: "Please enter all fields" });
         }

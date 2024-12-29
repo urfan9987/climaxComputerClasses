@@ -29,18 +29,26 @@
                     <div class="student-card">
                         <div class="d-flex align-items-center">
                             <!-- Student DP -->
-                            <img   src="data:image/png;base64,<%= student.dp %>" alt="Profile Picture" class="profile-img mb-3 student-dp" class="student-dp">
+                            <img src="data:image/png;base64,<%= student.dp %>" alt="Profile Picture" class="student-dp">
                             <div class="ms-3">
                                 <h5><%= student.name %></h5>
                                 <p><strong>Course:</strong> <%= student.course %></p>
                             </div>
                         </div>
-                        <!-- Button to generate certificate -->
+                        <!-- Generate Certificate Button -->
                         <form action="api/v1/update/DistCertificate/<%= student._id %>" method="POST">
                             <button type="submit" class="btn btn-success w-100 mt-3">Generate Certificate</button>
                         </form>
-                        <form action="api/v1/auth/delete/<%= student._id %>" method="post">
-                            <button type="submit" class="btn btn-success w-100 mt-3">Delete User</button>
+                        <!-- Delete User Button -->
+                        <form action="api/v1/auth/delete/<%= student._id %>" method="POST">
+                            <button type="submit" class="btn btn-danger w-100 mt-3">Delete User</button>
+                        </form>
+                        <!-- Assign Grade Section -->
+                        <form action="api/v1/update/api/grades/<%= student._id %>" method="POST">
+                            <div class="input-group mt-3">
+                                <input type="text" name="grade" class="form-control" placeholder="Enter Grade" required>
+                                <button type="submit" class="btn btn-primary">Assign</button>
+                            </div>
                         </form>
                     </div>
                 </div>

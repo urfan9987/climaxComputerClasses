@@ -1,27 +1,27 @@
 const jwt = require("jsonwebtoken");
-const AdminModel = require("../models/admin.model.js");
+const Admin = require("../models/admin.model");
 
 const isAdminLoggedIn = async (req, res, next) => {
-    const token = req.cookies.adminToken;
-
-    if (!token) {
-        return res.status(401).json({ msg: "Unauthorized access" });
-    }
-
     try {
-        // Verify token and get admin info from database
-        const decoded = jwt.verify(token, process.env.jWT_SECRET);
-        const admin = await AdminModel.findById(decoded._id);
-       
+        // Get token from cookies
+        const token = req.cookies.adminToken;
 
-        if (!admin) {
-            return res.status(401).json({ msg: "Not an admin" });
+        if (!token) {
+            return res.status(401).json({ msg: "Unauthorized: No token provided" });
         }
 
-        req.user = admin; // Attach admin info to the request
-        next();
+        // Verify token
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        req.admin = await Admin.findById(decoded.id);
+
+        if (!req.admin) {
+            return res.status(404).json({ msg: "Admin not found" });
+        }
+
+        next(); // Proceed to the next middleware or route handler
     } catch (err) {
-        return res.status(401).json({ msg: "Invalid token" });
+        console.error("Error in isAdminLoggedIn middleware:", err);
+        res.status(401).json({ msg: "Unauthorized: Invalid token" });
     }
 };
 

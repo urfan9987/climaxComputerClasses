@@ -6,6 +6,7 @@ const isAdminLoggedIn = require('../middleware/isAdminLoggedIn');
 const isUserLoggedIn = require('../middleware/isUserLoggedIn');
 const galleryModel = require('../models/gallery.model');
 const userModel = require('../models/User.models');
+const find = require('../middleware/admindatafetch');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -39,15 +40,15 @@ router.get('/admin-login', function(req, res, next) {
   res.render('admin-login', { title: 'login' });
 });
 
-router.get('/courseUplaod', function(req, res, next) {
+router.get('/courseUplaod', isAdminLoggedIn ,function(req, res, next) {
   res.render('CourseUplaod', { title: 'Course' });
 });
 
-router.get('/galleryUpload', function(req, res, next) {
+router.get('/galleryUpload', isAdminLoggedIn, function(req, res, next) {
   res.render('galleryUpload', { title: 'gallery' });
 });
 
-router.get('/stuRegister', function(req, res, next) {
+router.get('/stuRegister', isAdminLoggedIn ,function(req, res, next) {
   res.render('stuRegister', { title: 'Course' });
 });
 
@@ -57,13 +58,20 @@ router.get('/stuDashboard', isUserLoggedIn ,function(req, res, next) {
    
 });
 
-router.get("/admin-dashboard", (req, res) => {
+router.get("/admin-dashboard", isAdminLoggedIn ,(req, res) => {
   res.render("adminDashboard", { user: req.user }); // Adjust for EJS or HTML
 });
 
-router.get("/stuList", async (req, res) => {
+router.get("/stuList",isAdminLoggedIn ,async (req, res) => {
   const student = await userModel.find();
   res.render("stuList",{student}); // Adjust for EJS or HTML
 });
+
+router.get("/inquery" ,async (req, res) => {
+
+  res.render("inquiry"); // Adjust for EJS or HTML
+});
+
+
 
 module.exports = router;

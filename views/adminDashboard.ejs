@@ -53,14 +53,35 @@
         </div>
       </div>
 
-      <!-- Add Images to Gallery Button -->
+       <!--Inquiry Button-->
+
+    <div class="card dashboard-card">
+      <div class="card-body text-center">
+        <h5 class="card-title">Recent Inquiry </h5>
+        <button class="btn btn-primary" onclick="window.location.href='/api/v1/auth/admin/admin/inquiries'">Check</button>
+      </div>
+    </div>
+
+    
+
+      <!-- Manage Students Button -->
       <div class="card dashboard-card">
         <div class="card-body text-center">
           <h5 class="card-title">Add Images to Gallery</h5>
           <button class="btn btn-primary" onclick="window.location.href='/galleryUpload'">Add Images</button>
         </div>
       </div>
+
+      <!-- Add Images to Gallery Button -->
+      <div class="card dashboard-card">
+        <div class="card-body text-center">
+          <h5 class="card-title">Manage Students</h5>
+          <button class="btn btn-primary" onclick="window.location.href='/stuList'">Certificate/Grade</button>
+        </div>
+      </div>
     </div>
+  </div>
+
 
     <!-- Logout Button -->
     <button class="btn logout-btn" onclick="window.location.href='/logout'">Logout</button>
