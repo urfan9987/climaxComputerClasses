@@ -36,7 +36,20 @@ const UserSchema = new mongoose.Schema({
   course: {
     type: String,
     // required: [true, "Course is required"],
-    enum: ["Web Development", "Data Science", "Cyber Security", "AI and ML"],
+    enum: [
+      "CCC", 
+      "O Level", 
+      "DCA", 
+      "ADCA", 
+      "MICROSOFT", 
+      "CPCA", 
+      "EXCEL", 
+      "DIT", 
+      "JAVA", 
+      "DTP", 
+      "CCA", 
+      "Tally + GST", 
+      ]
   },
   dp: {
     type: String, // Store the file path or cloud storage URL
