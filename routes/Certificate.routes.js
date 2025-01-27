@@ -29,10 +29,10 @@ router.post("/api/:studentId", async (req, res) => {
     return res.status(404).send("Student not found or course not completed");
   }
 
-  const { name, fathersname, grade, course, dp } = student;
+  const { username, name, fathersname, grade, course, dp } = student;
 
   // Load certificate template
-  const template = await loadImage("./templates/22222-1.png");
+  const template = await loadImage("./templates/222222-1.png");
   const canvas = createCanvas(template.width, template.height);
   const ctx = canvas.getContext("2d");
 
@@ -48,6 +48,7 @@ router.post("/api/:studentId", async (req, res) => {
   ctx.font = "50px Arial";
   ctx.fillText(grade, 550, 1490);
   ctx.fillText(course, 950, 1390);
+  ctx.fillText(username, 250, 1100);
 
   // Decode and draw the Base64 profile image (dp)
   if (dp) {

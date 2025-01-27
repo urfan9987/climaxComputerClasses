@@ -48,7 +48,8 @@ const UserSchema = new mongoose.Schema({
       "JAVA", 
       "DTP", 
       "CCA", 
-      "Tally + GST", 
+      "Tally Accounting", 
+      "HINDI/ENGLISH TYPING"
       ]
   },
   dp: {
