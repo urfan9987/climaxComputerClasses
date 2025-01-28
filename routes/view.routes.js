@@ -7,10 +7,17 @@ const isUserLoggedIn = require('../middleware/isUserLoggedIn');
 const galleryModel = require('../models/gallery.model');
 const userModel = require('../models/User.models');
 const find = require('../middleware/admindatafetch');
+// const course = require('../models/course.model');
+const courseModel = require('../models/course.model');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get('/', async function(req, res, next) {
+  const course = await courseModel.find();
+  res.render('index', { title: 'HOMe', course });
+});
+router.get('/courses', async function(req, res, next) {
+  const course = await courseModel.find();
+  res.render('courses', { title: 'courses', course });
 });
 
 router.get('/contact-us', function(req, res, next) {

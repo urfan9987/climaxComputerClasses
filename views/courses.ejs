@@ -147,82 +147,43 @@ ul, ol {
     margin-bottom: 10px;
 }
 </style>
+<!-- ---------------dynamic courses  ----------- -->
+<% course.forEach(course => { %>
+  <div class="course-contents mb-4">
+    <div class="row">
+      <!-- Course Image -->
+      <div class="col-md-4">
+        <div class="course-image-container">
+          <img src="data:image/jpeg;base64,<%= course.images %>" alt="<%= course.title %>" class="course-image">
+        </div>
+      </div>
+
+      <!-- Course Details -->
+      <div class="col-md-8">
+        <div class="contents p-3">
+          <h3 class="mb-3"><%= course.title %></h3>
+          <!-- Description Section -->
+          <div class="description mb-3">
+            <p><%= course.description %></p>
+          </div>
+          <!-- Quick Button -->
+          <div class="quick-btn">
+            <!-- Add your button or link here if needed -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% }) %>
+<!-- ---------------dynamic courses end  ----------- -->
               
-<div class="course-contents">
-<div class="course">
-<img src="new/images/user/1547900670417.jpg" style="width:100%">
-</div>
-<div class="contents">					
-<h3>CERTIFICATE IN COMPUTER APPLICATION</h3>
-<div class="quick-btn">
-<ul>
-<a href="coursesab96.html?cid=TXpjPQ=="><img src="images/clickhere.gif"></a>
-</ul></div>			
-</div>
-</div>
+
               
-<div class="course-contents">
-<div class="course">
-<img src="new/images/user/1547904291883.jpg" style="width:100%">
-</div>
-<div class="contents">					
-<h3>I-TECH (HARDWARE)</h3>
-<div class="quick-btn">
-<ul>
-<a href="coursesd6c5.html?cid=TkRrPQ=="><img src="images/clickhere.gif"></a>
-</ul></div>			
-</div>
-</div>
+
               
-<div class="course-contents">
-<div class="course">
-<img src="new/images/user/1547904464679.png" style="width:100%">
-</div>
-<div class="contents">					
-<h3>I-NET (NETWORKING)</h3>
-<div class="quick-btn">
-<ul>
-<a href="coursese372.html?cid=TlRBPQ=="><img src="images/clickhere.gif"></a>
-</ul></div>			
-</div>
-</div>
+
               
-<div class="course-contents">
-<div class="course">
-<img src="new/images/user/1547904620215.png" style="width:100%">
-</div>
-<div class="contents">					
-<h3>CISCO CERTIFIED NETWORK ASSOCIATE(CCNA)</h3>
-<div class="quick-btn">
-<ul>
-<a href="courses0d14.html?cid=TlRFPQ=="><img src="images/clickhere.gif"></a>
-</ul></div>			
-</div>
-</div>
-              
-<div class="course-contents">
-<div class="course">
-<img src="new/images/user/1547904699360.png" style="width:100%">
-</div>
-<div class="contents">					
-<h3>RED HAT CERTIFIED SYSTEM ENGINEER(RHCE)</h3>
-<div class="quick-btn">
-<ul>
-<a href="coursesb71d.html?cid=TlRJPQ=="><img src="images/clickhere.gif"></a>
-</ul></div>			
-</div>
-</div>
-              
-<div class="course-contents">
-<div class="course">
-<img src="new/images/user/1547904811307.jpg" style="width:100%">
-</div>
-<div class="contents">					
-<h3>MICROSOFT CERTIFIED SYSTEM ENGINEER(MCSE)</h3>
-<div class="quick-btn">
-<ul>
-<a href="courses1883.html?cid=TlRNPQ=="><img src="images/clickhere.gif"></a>
-</ul></div>			
+		
 </div>
 </div>
 </div>
