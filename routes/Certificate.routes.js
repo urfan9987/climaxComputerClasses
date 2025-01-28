@@ -29,7 +29,7 @@ router.post("/api/:studentId", async (req, res) => {
     return res.status(404).send("Student not found or course not completed");
   }
 
-  const { username, name, fathersname, grade, course, dp } = student;
+  const { username, name, fathersname, grade, date, course, dp } = student;
 
   // Load certificate template
   const template = await loadImage("./templates/222222-1.png");
@@ -42,13 +42,14 @@ router.post("/api/:studentId", async (req, res) => {
   // Add text fields (name, father's name, grade, and course)
   ctx.font = "50px Arial";
   ctx.fillStyle = "black";
-  ctx.fillText(name, 750, 1180);
+  ctx.fillText(name, 680, 1090);
   ctx.font = "50px Arial bold";
-  ctx.fillText(fathersname, 600, 1285);
+  ctx.fillText(fathersname, 450, 1185);
   ctx.font = "50px Arial";
-  ctx.fillText(grade, 550, 1490);
-  ctx.fillText(course, 950, 1390);
-  ctx.fillText(username, 250, 1100);
+  ctx.fillText(grade, 520, 1380);
+  ctx.fillText(course, 900, 1280);
+  ctx.fillText(username, 220, 1020);
+  ctx.fillText(date, 430, 1475);
 
   // Decode and draw the Base64 profile image (dp)
   if (dp) {
@@ -56,7 +57,7 @@ router.post("/api/:studentId", async (req, res) => {
       const img = new Image();
       img.src = `data:image/png;base64,${dp}`; // Assuming dp is stored as Base64 without prefix
       const dpSize = 300; // Set profile image size (200x200 pixels)
-      ctx.drawImage(img, 1231, 720, 280, 390); // Adjust position and size
+      ctx.drawImage(img, 1070, 660, 270, 360); // Adjust position and size
     } catch (error) {
       console.error("Failed to decode and draw Base64 image:", error.message);
     }
@@ -69,9 +70,9 @@ router.post("/api/:studentId", async (req, res) => {
 
 router.post("/api/grades/:studentId", async (req, res) => {
   const studentId = req.params.studentId;
-  const { grade } = req.body;
+  const { grade, date } = req.body;
 
-  const updatedStudent = await UserModels.findByIdAndUpdate(studentId, { grade: grade });
+  const updatedStudent = await UserModels.findByIdAndUpdate(studentId, { grade: grade, date: date });
   if (updatedStudent) {
     res.status(200).json({ message: "Grades updated successfully", updatedStudent });
   } else {

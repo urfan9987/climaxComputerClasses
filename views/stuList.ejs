@@ -47,6 +47,7 @@
                         <form action="api/v1/update/api/grades/<%= student._id %>" method="POST">
                             <div class="input-group mt-3">
                                 <input type="text" name="grade" class="form-control" placeholder="Enter Grade" required>
+                                <input type="text" name="date" class="form-control" placeholder="DD-MM-YY" required>
                                 <button type="submit" class="btn btn-primary">Assign</button>
                             </div>
                         </form>

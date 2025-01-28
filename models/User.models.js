@@ -18,6 +18,10 @@ const UserSchema = new mongoose.Schema({
     type: String,
     default: "Not assigned yet ",
   },
+  date:{
+    type: String,
+  },
+
   certificate:{
     type: String,
     default: "Not issued yet ",
