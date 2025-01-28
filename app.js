@@ -51,6 +51,7 @@ app.use("/api/v1/auth/admin/",adminRoutes)
 app.use("/api/v1/upload/", UploadRoutes)
 app.use("/api/v1/update/", certificate)
 
+
 // renderRoutes(app);
 
 app.use('/', indexRouter);
@@ -59,5 +60,7 @@ app.use('/', indexRouter);
 // app.get('/',(req,res)=>{
 //     res.send("Hello World")
 // })
-
+app.use((req, res, next) => {
+  res.status(404).render('404'); // Assuming you're using EJS and have a 404.ejs file in the views folder
+});
 app.listen(3001, console.log("Auth Service running in #3001 Port"))
