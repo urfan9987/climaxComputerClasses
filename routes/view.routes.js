@@ -47,8 +47,9 @@ router.get('/admin-login', function(req, res, next) {
   res.render('admin-login', { title: 'login' });
 });
 
-router.get('/courseUplaod', isAdminLoggedIn ,function(req, res, next) {
-  res.render('CourseUplaod', { title: 'Course' });
+router.get('/courseUplaod', isAdminLoggedIn ,async function(req, res, next) {
+  const course = await courseModel.find();
+  res.render('CourseUplaod', { title: 'Course',course });
 });
 
 router.get('/galleryUpload', isAdminLoggedIn, function(req, res, next) {
@@ -79,6 +80,19 @@ router.get("/inquery" ,async (req, res) => {
   res.render("inquiry"); // Adjust for EJS or HTML
 });
 
+
+router.post('/api/v1/courses/:id', async (req, res) => {
+  try {
+    const courseId = req.params.id;
+    const deletedCourse = await courseModel.findByIdAndDelete(courseId); // Delete the course from the database
+    if (!deletedCourse) {
+      return res.status(404).json({ message: "Course not found" });
+    }
+    res.status(200).json({ message: "Course deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ message: "An error occurred", error });
+  }
+});
 
 
 module.exports = router;

@@ -3,14 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Upload Course</title>
+  <title>Course Management</title>
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
   <div class="container mt-5">
-    <h2 class="mb-4">Upload Course</h2>
-    <form action="/api/v1/upload/courseUpload" method="POST" enctype="multipart/form-data">
+    <!-- Upload Course Form -->
+    <h2 class="mb-4 text-center">Upload Course</h2>
+    <form action="/api/v1/upload/courseUpload" method="POST" enctype="multipart/form-data" class="shadow p-4 rounded bg-light">
       <div class="mb-3">
         <label for="courseTitle" class="form-label">Course Title</label>
         <input type="text" class="form-control" id="courseTitle" name="title" required>
@@ -23,12 +26,59 @@
         <label for="courseImage" class="form-label">Course Image</label>
         <input type="file" class="form-control" id="courseImage" name="images" accept="image/*" required>
       </div>
-      <button type="submit" class="btn btn-primary">Upload Course</button>
+      <button type="submit" class="btn btn-primary w-100">Upload Course</button>
     </form>
+
+    <!-- Course List -->
+    <h1 class="mb-4 mt-5 text-center">Course List</h1>
+    <div class="row g-4">
+      <% course.forEach(course => { %>
+        <div class="col-md-6 col-lg-4">
+          <div class="card shadow h-100">
+            <img src="data:image/jpeg;base64,<%= course.images %>" class="card-img-top" alt="<%= course.title %>" style="height: 200px; object-fit: cover;">
+            <div class="card-body">
+              <h5 class="card-title text-truncate"><%= course.title %></h5>
+              <p class="card-text text-muted"><%= course.description %></p>
+            </div>
+            <div class="card-footer text-center">
+              <!-- Delete Button -->
+              <form action="/api/v1/courses/<%= course._id %>" method="POST">
+                <button type="submit" class="btn btn-danger btn-sm w-100" onclick="deleteCourse('<%= course._id %>')">
+                  <i class="fas fa-trash"></i> Delete
+                </button>
+            </form>
+              
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
   </div>
 
   <!-- Bootstrap JS & Dependencies -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+  <!-- Custom JavaScript for delete functionality -->
+  <script>
+    function deleteCourse(courseId) {
+      if (confirm("Are you sure you want to delete this course?")) {
+        // Send a DELETE request to the server
+        fetch(`/api/v1/courses/${courseId}`, {
+          method: 'post',
+        })
+        .then(response => {
+          if (response.ok) {
+            alert("Course deleted successfully!");
+            window.location.reload(); // Refresh the page to reflect the changes
+          } else {
+            alert("Failed to delete the course.");
+          }
+        })
+        .catch(error => {
+          console.error("Error:", error);
+        });
+      }
+    }
+  </script>
 </body>
 </html>
