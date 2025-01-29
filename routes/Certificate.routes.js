@@ -47,7 +47,7 @@ router.post("/api/:studentId", async (req, res) => {
   ctx.fillText(fathersname, 450, 1185);
   ctx.font = "50px Arial";
   ctx.fillText(grade, 520, 1380);
-  ctx.fillText(course, 900, 1280);
+  ctx.fillText(course, 800, 1280);
   ctx.fillText(username, 220, 1020);
   ctx.fillText(date, 430, 1475);
 
